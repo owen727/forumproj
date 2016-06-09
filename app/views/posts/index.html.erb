@@ -4,10 +4,11 @@
   <%@posts.each do |p| %>
     <tr>
       <td> 
-         <%= p.title %>
-         <%= link_to "Show", post_path(p) %>
-         
-         
+      
+          <h2><%= link_to p.title, post_path(p) %></h2>
+          
+          <h3>Posted at <%= time_ago_in_words(p.created_at) %> ago </h3> 
+
       </td>
     </tr>
   <% end %>

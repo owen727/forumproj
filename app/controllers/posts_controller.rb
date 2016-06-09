@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order("created_at DESC")
   end
 
 
@@ -32,17 +32,13 @@ class PostsController < ApplicationController
   end
 
 
-  def update
-    
+  def update  
     if @post.update(post_params)
       redirect_to post_path(@post)  
     else
       render "edit"
     end  
-  
   end
-
-
 
   def destroy
     @post.destroy
