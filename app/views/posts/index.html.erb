@@ -1,2 +1,16 @@
+<h1>Post Lists</h1>
 
-<%= @posts %>
+<table>
+  <%@posts.each do |p| %>
+    <tr>
+      <td> 
+         <%= p.title %>
+         <%= link_to "Show", post_path(p) %>
+         
+         
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "New Post" , new_post_path %>
