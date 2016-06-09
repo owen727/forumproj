@@ -7,7 +7,10 @@
       
           <h2><%= link_to p.title, post_path(p) %></h2>
           
-          <h3>Posted at <%= time_ago_in_words(p.created_at) %> ago </h3> 
+          <h3>Posted at <%= time_ago_in_words(p.created_at) %> ago by 
+            <%= p.user.email %>
+            
+          </h3> 
 
       </td>
     </tr>
