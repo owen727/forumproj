@@ -1,0 +1,7 @@
+
+
+ <p>
+   <%= comment.comment %>   by <%=comment.user.email %> 
+   <%= link_to "Edit", edit_post_comment_path(comment.post, comment) %>
+   <%= link_to "Delete", [comment.post, comment],:method => :delete %> 
+</p> 

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :find_post, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show, :about]
 
   def index
     @posts = Post.all.order("created_at DESC")
@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
 
   def new
-    @post = current_user.posts.build
+    @post = current_user.posts.build 
   end
 
 
@@ -24,6 +24,7 @@ class PostsController < ApplicationController
 
 
   def show 
+    
   end
 
 
@@ -42,8 +43,17 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    flash[:alert] = "delete success"
     redirect_to posts_path
   end
+
+  def about
+     @users = User.all
+     @posts = Post.all
+     @comments = Comment.all
+  end
+ 
+
 
 
   private
@@ -54,7 +64,7 @@ class PostsController < ApplicationController
 
 
     def post_params
-      params.require(:post).permit( :title, :content)
+      params.require(:post).permit( :title, :content, :clicked, :category_ids => [])
     end
 
 

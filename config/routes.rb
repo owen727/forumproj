@@ -4,8 +4,16 @@ Rails.application.routes.draw do
   
   root "posts#index"
 
-  resources :posts
+  resources :posts do
+    resources :comments
 
+    collection do
+    get :about
+  end  
+
+  end
+
+  
   devise_for :users
 
 
